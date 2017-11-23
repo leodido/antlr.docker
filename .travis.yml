@@ -1,0 +1,16 @@
+env:
+  - VERSION=4.6 TAG=4.6
+  - VERSION=4.7 TAG=4.7
+  - VERSION=4.7
+
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: Create
+      script: make -n create VERSION=${VERSION} TAG=${TAG}
+    - stage: Deploy
+      script: 
+        - docker login -e $DOCKER_EMAIL -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        - make -n deploy TAG=${TAG}
