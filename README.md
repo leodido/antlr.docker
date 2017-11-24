@@ -22,12 +22,30 @@ Directly pull this image from the docker index.
 docker pull leodido/antlr
 ```
 
-Then extract the ...
-
 Usage
 -----
 
-...
+The entrypoint of this container is the antlr executable.
+
+You have to instantiate a container from this image bind-mounting volumes (for input and output files) and the passing the typical command line options as well as if you are calling antlr directly.
+
+Something like the following line.
+
+```
+docker run --rm -v ... --user $(id -u):$(id -g) leodido/antlr <antlr_command_line_args>
+```
+
+I suggest to create an alias to this invocation.
+
+Or you can use the **wrapper script** [antlr](/antlr).
+
+It accepts the same options as antlr itself. It bind-mounts all the necessary directories and calls the antlr executable within the container.
+
+```
+docker create --name antlr leodido/antlr
+sudo docker cp antlr:antlr .
+docker rm antlr
+```
 
 ---
 
