@@ -39,7 +39,9 @@ I suggest to create an alias to this invocation.
 
 Or you can use the **wrapper script** [antlr](/antlr).
 
-It accepts the same options as antlr itself. It bind-mounts all the necessary directories and calls the antlr executable within the container.
+It accepts the same options as antlr itself.
+
+It bind-mounts all the necessary directories and calls the antlr executable within the container.
 
 ```
 docker create --name antlr leodido/antlr

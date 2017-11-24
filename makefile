@@ -1,4 +1,4 @@
-.PHONY: check-version
+.PHONY: deploy
 
 TAG ?= latest
 
